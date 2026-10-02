@@ -75,7 +75,8 @@ button:hover{
     background:#13254d;
     padding:15px;
     border-radius:10px;
-    font-style:italic;
+    margin-top:10px;
+    margin-bottom:10px;
 }
 </style>
 </head>
@@ -104,7 +105,9 @@ Przeanalizuj je i odnajdź lokalizację.
 że zacznie się uczyć od jutra.
 </p>
 
-<p>Kim jest taka osoba?</p>
+<p>
+Kim jest taka osoba?
+</p>
 
 <input id="a1" type="text">
 
@@ -118,9 +121,13 @@ Przeanalizuj je i odnajdź lokalizację.
 
 <p>Zaszyfrowana wiadomość:</p>
 
-<h3>19 - 20 - 21 - 4 - 5 - 14 - 3 - 11 - 1</h3>
+<div class="quote">
+19 - 20 - 21 - 4 - 5 - 14 - 3 - 11 - 1
+</div>
 
-<p>Podpowiedź: A=1, B=2, C=3...</p>
+<p>
+Podpowiedź: A=1, B=2, C=3...
+</p>
 
 <input id="a2" type="text">
 
@@ -133,17 +140,15 @@ Przeanalizuj je i odnajdź lokalizację.
 <h2>📁 Dowód nr 3</h2>
 
 <p>
-Świadek zapamiętał tylko tyle:
+W notatniku znaleziono ciąg:
 </p>
 
 <div class="quote">
-„Numer budynku był taki sam, jak liczba zawodników
-dwóch drużyn piłkarskich znajdujących się jednocześnie
-na boisku.”
+2, 4, 8, 16, ?
 </div>
 
 <p>
-Ile to było?
+Brakująca liczba jest pierwszą częścią klucza.
 </p>
 
 <input id="a3" type="text">
@@ -151,19 +156,80 @@ Ile to było?
 <button onclick="check3()">Sprawdź</button>
 
 <p id="m3"></p>
+
+<div id="step3b" class="hidden">
+
+<hr>
+
+<p>
+✅ Dobrze.
+</p>
+
+<div class="quote">
+"Odejmij liczbę miesięcy w roku."
+</div>
+
+<p>
+Jaki wynik otrzymujesz?
+</p>
+
+<input id="a3b" type="text">
+
+<button onclick="check3b()">Sprawdź</button>
+
+<p id="m3b"></p>
+
+</div>
+
+<div id="step3c" class="hidden">
+
+<hr>
+
+<p>
+✅ Jeszcze jeden krok.
+</p>
+
+<div class="quote">
+"Dodaj liczbę dni weekendu."
+</div>
+
+<p>
+Jaki jest końcowy wynik?
+</p>
+
+<input id="a3c" type="text">
+
+<button onclick="check3c()">Sprawdź</button>
+
+<p id="m3c"></p>
+
+</div>
+
 </div>
 
 <div class="card hidden" id="step4">
 <h2>📁 Dowód nr 4</h2>
 
 <p>
-🏟️ Spodek<br>
-🏘️ Nikiszowiec<br>
-🎼 NOSPR
+Przesłuchiwany świadek zeznał:
 </p>
 
+<div class="quote">
+"Widziałem charakterystyczny latający spodek.
+Nie był jednak na niebie.
+
+Później przechodziłem przez starą robotniczą dzielnicę
+z czerwonej cegły.
+
+Na końcu usłyszałem koncert
+w nowoczesnym budynku muzycznym."
+</div>
+
 <p>
-W jakim mieście znajdują się wszystkie te miejsca?
+Śledczy ustalili, że wszystkie miejsca znajdują się
+w jednym mieście.
+
+Jakim?
 </p>
 
 <input id="a4" type="text">
@@ -174,6 +240,7 @@ W jakim mieście znajdują się wszystkie te miejsca?
 </div>
 
 <div class="card hidden" id="final">
+
 <h2>🎉 Miejsce odnalezione!</h2>
 
 <div class="address">
@@ -184,6 +251,7 @@ Katowice
 <br>
 
 <div style="text-align:center;">
+
 <a
 href="https://maps.google.com/?q=Studencka+22+Katowice"
 target="_blank"
@@ -198,6 +266,7 @@ font-weight:bold;
 ">
 🚗 Prowadź mnie
 </a>
+
 </div>
 
 </div>
@@ -208,22 +277,22 @@ font-weight:bold;
 
 function normalize(text){
     return text
-        .toLowerCase()
-        .trim()
-        .replace(/ą/g,"a")
-        .replace(/ć/g,"c")
-        .replace(/ę/g,"e")
-        .replace(/ł/g,"l")
-        .replace(/ń/g,"n")
-        .replace(/ó/g,"o")
-        .replace(/ś/g,"s")
-        .replace(/ż/g,"z")
-        .replace(/ź/g,"z");
+    .toLowerCase()
+    .trim()
+    .replace(/ą/g,"a")
+    .replace(/ć/g,"c")
+    .replace(/ę/g,"e")
+    .replace(/ł/g,"l")
+    .replace(/ń/g,"n")
+    .replace(/ó/g,"o")
+    .replace(/ś/g,"s")
+    .replace(/ż/g,"z")
+    .replace(/ź/g,"z");
 }
 
 function check1(){
 
-    var answer = normalize(document.getElementById("a1").value);
+    let answer = normalize(document.getElementById("a1").value);
 
     if(answer === "student"){
 
@@ -237,7 +306,7 @@ function check1(){
 
 function check2(){
 
-    var answer = normalize(document.getElementById("a2").value);
+    let answer = normalize(document.getElementById("a2").value);
 
     if(answer === "studencka"){
 
@@ -251,14 +320,39 @@ function check2(){
 
 function check3(){
 
-    var answer = normalize(document.getElementById("a3").value);
+    let answer = normalize(document.getElementById("a3").value);
 
-    if(
-       answer === "22" ||
-       answer === "dwadziescia dwa"
-    ){
+    if(answer === "32"){
 
         document.getElementById("m3").innerHTML =
+        "<span class='success'>✅ Pierwsza część klucza odnaleziona.</span>";
+
+        document.getElementById("step3b")
+        .classList.remove("hidden");
+    }
+}
+
+function check3b(){
+
+    let answer = normalize(document.getElementById("a3b").value);
+
+    if(answer === "20"){
+
+        document.getElementById("m3b").innerHTML =
+        "<span class='success'>✅ Dobrze.</span>";
+
+        document.getElementById("step3c")
+        .classList.remove("hidden");
+    }
+}
+
+function check3c(){
+
+    let answer = normalize(document.getElementById("a3c").value);
+
+    if(answer === "22"){
+
+        document.getElementById("m3c").innerHTML =
         "<span class='success'>✅ Numer budynku ustalony.</span>";
 
         document.getElementById("step4")
@@ -268,7 +362,7 @@ function check3(){
 
 function check4(){
 
-    var answer = normalize(document.getElementById("a4").value);
+    let answer = normalize(document.getElementById("a4").value);
 
     if(answer === "katowice"){
 
