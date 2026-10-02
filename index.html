@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tajne Akta nr 22</title>
+<title>Tajne Akta nr 23</title>
 
 <style>
 body{
-    font-family:Arial,sans-serif;
+    font-family: Arial, sans-serif;
     background:#0b1736;
     color:white;
     margin:0;
@@ -39,9 +39,10 @@ h1{
 input{
     width:100%;
     padding:12px;
-    margin-top:10px;
-    border-radius:8px;
     border:none;
+    border-radius:8px;
+    margin-top:10px;
+    box-sizing:border-box;
 }
 
 button{
@@ -54,15 +55,27 @@ button{
     font-weight:bold;
 }
 
+button:hover{
+    background:#e8b100;
+}
+
 .success{
-    color:#6dff8b;
+    color:#7CFF8A;
+    font-weight:bold;
 }
 
 .address{
+    text-align:center;
     font-size:32px;
     color:#ffc83d;
     font-weight:bold;
-    text-align:center;
+}
+
+.quote{
+    background:#13254d;
+    padding:15px;
+    border-radius:10px;
+    font-style:italic;
 }
 </style>
 </head>
@@ -74,12 +87,10 @@ button{
 <h1>🔎 TAJNE AKTA NR 23</h1>
 
 <div class="card">
-<p>
-Czesiu,
-</p>
+<p>Czesiu,</p>
 
 <p>
-ktoś ukrył dla Ciebie miejsce, w którym znajduje się kolejna część niespodzianki.
+Ktoś ukrył dla Ciebie miejsce, w którym znajduje się kolejna część niespodzianki.
 Udało nam się zabezpieczyć kilka materiałów dowodowych.
 Przeanalizuj je i odnajdź lokalizację.
 </p>
@@ -89,16 +100,16 @@ Przeanalizuj je i odnajdź lokalizację.
 <h2>📁 Dowód nr 1</h2>
 
 <p>
-🎓 Właściciel tego dokumentu walczy z sesją, żyje kawą
-i ciągle powtarza, że zacznie się uczyć od jutra.
+🎓 Właściciel tego dokumentu walczy z sesją, żyje kawą i ciągle powtarza,
+że zacznie się uczyć od jutra.
 </p>
 
-<p>
-Kim jest taka osoba?
-</p>
+<p>Kim jest taka osoba?</p>
 
-<input id="a1">
-<button onclick="alert('działa')">Sprawdź</button>
+<input id="a1" type="text">
+
+<button onclick="check1()">Sprawdź</button>
+
 <p id="m1"></p>
 </div>
 
@@ -111,8 +122,10 @@ Kim jest taka osoba?
 
 <p>Podpowiedź: A=1, B=2, C=3...</p>
 
-<input id="a2">
-<button onclick="alert('działa')">Sprawdź</button>
+<input id="a2" type="text">
+
+<button onclick="check2()">Sprawdź</button>
+
 <p id="m2"></p>
 </div>
 
@@ -120,13 +133,23 @@ Kim jest taka osoba?
 <h2>📁 Dowód nr 3</h2>
 
 <p>
-Jestem liczbą parzystą.<br>
-Składam się z dwóch identycznych cyfr.<br>
-Suma moich cyfr wynosi 4.
+Świadek zapamiętał tylko tyle:
 </p>
 
-<input id="a3">
-<button onclick="alert('działa')">Sprawdź</button>
+<div class="quote">
+„Numer budynku był taki sam, jak liczba zawodników
+dwóch drużyn piłkarskich znajdujących się jednocześnie
+na boisku.”
+</div>
+
+<p>
+Ile to było?
+</p>
+
+<input id="a3" type="text">
+
+<button onclick="check3()">Sprawdź</button>
+
 <p id="m3"></p>
 </div>
 
@@ -143,8 +166,10 @@ Suma moich cyfr wynosi 4.
 W jakim mieście znajdują się wszystkie te miejsca?
 </p>
 
-<input id="a4">
-<button onclick="alert('działa')">Sprawdź</button>
+<input id="a4" type="text">
+
+<button onclick="check4()">Sprawdź</button>
+
 <p id="m4"></p>
 </div>
 
@@ -158,50 +183,101 @@ Katowice
 
 <br>
 
-<a href="https://maps.google.com/?q=Studencka+22+Katowice"
+<div style="text-align:center;">
+<a
+href="https://maps.google.com/?q=Studencka+22+Katowice"
 target="_blank"
 style="
 background:#4CAF50;
 color:white;
 padding:15px 25px;
+border-radius:10px;
 text-decoration:none;
-border-radius:10px;">
+display:inline-block;
+font-weight:bold;
+">
 🚗 Prowadź mnie
-</aeplace(/ę/g,"e")
-.replace(/ł/g,"l")
-.replace(/ń/g,"n")
-.replace(/ó/g,"o")
-.replace(/ś/g,"s")
-.replace(/ż/g,"z")
-.replace(/ź/g,"z");
+</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function normalize(text){
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/ą/g,"a")
+        .replace(/ć/g,"c")
+        .replace(/ę/g,"e")
+        .replace(/ł/g,"l")
+        .replace(/ń/g,"n")
+        .replace(/ó/g,"o")
+        .replace(/ś/g,"s")
+        .replace(/ż/g,"z")
+        .replace(/ź/g,"z");
 }
 
 function check1(){
-if(normalize(document.getElementById("a1").value)=="student"){
-document.getElementById("m1").innerHTML="<span class='success'>✅ Dobrze!</span>";
-document.getElementById("step2").classList.remove("hidden");
-}
+
+    var answer = normalize(document.getElementById("a1").value);
+
+    if(answer === "student"){
+
+        document.getElementById("m1").innerHTML =
+        "<span class='success'>✅ Dobrze! Odkryto kolejny trop.</span>";
+
+        document.getElementById("step2")
+        .classList.remove("hidden");
+    }
 }
 
 function check2(){
-if(normalize(document.getElementById("a2").value)=="studencka"){
-document.getElementById("m2").innerHTML="<span class='success'>✅ Ustalono nazwę ulicy.</span>";
-document.getElementById("step3").classList.remove("hidden");
-}
+
+    var answer = normalize(document.getElementById("a2").value);
+
+    if(answer === "studencka"){
+
+        document.getElementById("m2").innerHTML =
+        "<span class='success'>✅ Ustalono nazwę ulicy.</span>";
+
+        document.getElementById("step3")
+        .classList.remove("hidden");
+    }
 }
 
 function check3(){
-if(normalize(document.getElementById("a3").value)=="22"){
-document.getElementById("m3").innerHTML="<span class='success'>✅ Numer ustalony.</span>";
-document.getElementById("step4").classList.remove("hidden");
-}
+
+    var answer = normalize(document.getElementById("a3").value);
+
+    if(
+       answer === "22" ||
+       answer === "dwadziescia dwa"
+    ){
+
+        document.getElementById("m3").innerHTML =
+        "<span class='success'>✅ Numer budynku ustalony.</span>";
+
+        document.getElementById("step4")
+        .classList.remove("hidden");
+    }
 }
 
 function check4(){
-if(normalize(document.getElementById("a4").value)=="katowice"){
-document.getElementById("m4").innerHTML="<span class='success'>✅ Lokalizacja znaleziona.</span>";
-document.getElementById("final").classList.remove("hidden");
-}
+
+    var answer = normalize(document.getElementById("a4").value);
+
+    if(answer === "katowice"){
+
+        document.getElementById("m4").innerHTML =
+        "<span class='success'>✅ Lokalizacja odnaleziona.</span>";
+
+        document.getElementById("final")
+        .classList.remove("hidden");
+    }
 }
 
 </script>
