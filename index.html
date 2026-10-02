@@ -6,152 +6,63 @@
 <title>Tajne Akta nr 22</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
-
 body{
-    margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:#0f172a;
+    font-family:Arial,sans-serif;
+    background:#0b1736;
     color:white;
+    margin:0;
+    padding:20px;
     line-height:1.6;
 }
 
 .container{
-    max-width:900px;
+    max-width:800px;
     margin:auto;
-    padding:25px;
-}
-
-.hero{
-    text-align:center;
-    padding:40px 20px;
-}
-
-.hero h1{
-    color:#fbbf24;
-    font-size:3rem;
-    margin-bottom:10px;
-}
-
-.hero p{
-    color:#cbd5e1;
 }
 
 .card{
-    background:#1e293b;
-    border-radius:16px;
-    padding:25px;
+    background:#1b2b57;
+    padding:20px;
+    border-radius:15px;
     margin-top:20px;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .hidden{
     display:none;
 }
 
+h1{
+    text-align:center;
+    color:#ffc83d;
+}
+
 input{
     width:100%;
-    padding:14px;
-    margin-top:15px;
+    padding:12px;
+    margin-top:10px;
+    border-radius:8px;
     border:none;
-    border-radius:10px;
-    font-size:16px;
 }
 
 button{
-    background:#f59e0b;
-    color:white;
-    border:none;
-    border-radius:10px;
+    margin-top:10px;
     padding:12px 20px;
-    margin-top:12px;
+    border:none;
+    border-radius:8px;
+    background:#ffc83d;
     cursor:pointer;
     font-weight:bold;
 }
 
-button:hover{
-    background:#d97706;
-}
-
 .success{
-    color:#22c55e;
-}
-
-.clue{
-    background:#0f172a;
-    border-left:5px solid #fbbf24;
-    padding:15px;
-    margin:15px 0;
-}
-
-.code{
-    background:black;
-    color:#22c55e;
-    font-family:monospace;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-    letter-spacing:3px;
-    font-size:1.3rem;
-}
-
-.photo{
-    background:#334155;
-    border-radius:10px;
-    padding:30px;
-    text-align:center;
-    font-size:1.1rem;
-    margin:10px 0;
-}
-
-.final-screen{
-    text-align:center;
-    padding:30px;
+    color:#6dff8b;
 }
 
 .address{
-    font-size:2.5rem;
-    color:#fbbf24;
+    font-size:32px;
+    color:#ffc83d;
     font-weight:bold;
-    margin:20px 0;
-}
-
-.maps-btn{
-    display:inline-block;
-    text-decoration:none;
-    background:#22c55e;
-    color:white;
-    padding:15px 25px;
-    border-radius:12px;
-    font-weight:bold;
-}
-
-.typing{
-    font-family:monospace;
-    color:#22c55e;
-    white-space:pre-line;
-}
-
-ul{
-    color:#e2e8f0;
-}
-
-.fade{
-    animation:fadeIn .8s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    text-align:center;
 }
 </style>
 </head>
@@ -160,17 +71,140 @@ ul{
 
 <div class="container">
 
-<div class="hero">
-    <h1>🔎 TAJNE AKTA NR 22</h1>
+<h1>🔎 TAJNE AKTA NR 22</h1>
 
-    <p>
-        Czesiu,<br>
-        ktoś ukrył dla Ciebie miejsce, w którym znajduje się kolejna część niespodzianki.
-        Udało nam się zabezpieczyć kilka materiałów dowodowych.
-        Przeanalizuj je i odnajdź lokalizację.
-    </p>
+<div class="card">
+<p>
+Czesiu,
+</p>
+
+<p>
+ktoś ukrył dla Ciebie miejsce, w którym znajduje się kolejna część niespodzianki.
+Udało nam się zabezpieczyć kilka materiałów dowodowych.
+Przeanalizuj je i odnajdź lokalizację.
+</p>
 </div>
 
-<!-- DOWÓD 1 -->
+<div class="card" id="step1">
+<h2>📁 Dowód nr 1</h2>
 
-<div class="card fade" id="step
+<p>
+🎓 Właściciel tego dokumentu walczy z sesją, żyje kawą
+i ciągle powtarza, że zacznie się uczyć od jutra.
+</p>
+
+<p>
+Kim jest taka osoba?
+</p>
+
+<input id="a1">
+<button onclick="check1()">Sprawdź</button>
+<p id="m1"></p>
+</div>
+
+<div class="card hidden" id="step2">
+<h2>📁 Dowód nr 2</h2>
+
+<p>Zaszyfrowana wiadomość:</p>
+
+<h3>19 - 20 - 21 - 4 - 5 - 14 - 3 - 11 - 1</h3>
+
+<p>Podpowiedź: A=1, B=2, C=3...</p>
+
+<input id="a2">
+<button onclick="check2()">Sprawdź</button>
+<p id="m2"></p>
+</div>
+
+<div class="card hidden" id="step3">
+<h2>📁 Dowód nr 3</h2>
+
+<p>
+Jestem liczbą parzystą.<br>
+Składam się z dwóch identycznych cyfr.<br>
+Suma moich cyfr wynosi 4.
+</p>
+
+<input id="a3">
+<button onclick="check3()">Sprawdź</button>
+<p id="m3"></p>
+</div>
+
+<div class="card hidden" id="step4">
+<h2>📁 Dowód nr 4</h2>
+
+<p>
+🏟️ Spodek<br>
+🏘️ Nikiszowiec<br>
+🎼 NOSPR
+</p>
+
+<p>
+W jakim mieście znajdują się wszystkie te miejsca?
+</p>
+
+<input id="a4">
+<button onclick="check4()">Sprawdź</button>
+<p id="m4"></p>
+</div>
+
+<div class="card hidden" id="final">
+<h2>🎉 Miejsce odnalezione!</h2>
+
+<div class="address">
+ul. Studencka 22<br>
+Katowice
+</div>
+
+<br>
+
+<a href="https://maps.google.com/?q=Studencka+22+Katowice"
+target="_blank"
+style="
+background:#4CAF50;
+color:white;
+padding:15px 25px;
+text-decoration:none;
+border-radius:10px;">
+🚗 Prowadź mnie
+</aeplace(/ę/g,"e")
+.replace(/ł/g,"l")
+.replace(/ń/g,"n")
+.replace(/ó/g,"o")
+.replace(/ś/g,"s")
+.replace(/ż/g,"z")
+.replace(/ź/g,"z");
+}
+
+function check1(){
+if(normalize(document.getElementById("a1").value)=="student"){
+document.getElementById("m1").innerHTML="<span class='success'>✅ Dobrze!</span>";
+document.getElementById("step2").classList.remove("hidden");
+}
+}
+
+function check2(){
+if(normalize(document.getElementById("a2").value)=="studencka"){
+document.getElementById("m2").innerHTML="<span class='success'>✅ Ustalono nazwę ulicy.</span>";
+document.getElementById("step3").classList.remove("hidden");
+}
+}
+
+function check3(){
+if(normalize(document.getElementById("a3").value)=="22"){
+document.getElementById("m3").innerHTML="<span class='success'>✅ Numer ustalony.</span>";
+document.getElementById("step4").classList.remove("hidden");
+}
+}
+
+function check4(){
+if(normalize(document.getElementById("a4").value)=="katowice"){
+document.getElementById("m4").innerHTML="<span class='success'>✅ Lokalizacja znaleziona.</span>";
+document.getElementById("final").classList.remove("hidden");
+}
+}
+
+</script>
+
+</body>
+</html>
