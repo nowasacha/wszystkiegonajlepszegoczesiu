@@ -61,12 +61,18 @@ button{
     font-weight:bold;
 }
 
+button:hover{
+    background:#e8b82d;
+}
+
 .success{
     color:#7dff8d;
+    font-weight:bold;
 }
 
 .error{
     color:#ff8080;
+    font-weight:bold;
 }
 
 .map{
@@ -91,9 +97,7 @@ button{
 <h1>🔎 TAJNE AKTA NR 23</h1>
 
 <div class="card">
-<p>
-Czesiu,
-</p>
+<p>Czesiu,</p>
 
 <p>
 Ktoś ukrył dla Ciebie miejsce, w którym czeka kolejna część niespodzianki.
@@ -184,7 +188,6 @@ Odpowiedź:
 <h2>📁 Dowód nr 3</h2>
 
 <div class="quote">
-
 Świadek zeznał:
 
 <br><br>
@@ -203,7 +206,6 @@ Następnie trafiłem do siedziby narodowej orkiestry radiowej.
 <br><br>
 
 Wszystkie miejsca znajdowały się w tym samym mieście.”
-
 </div>
 
 <p>
@@ -222,10 +224,10 @@ Jakie to miasto?
 
 <h2>🗺️ Ostatni materiał dowodowy</h2>
 
-<img src
+<img src="mapa.jpg" class="map" alt="Mapa">
 
 <p>
-Odtwórz pełny adres:
+Odpowiedź:
 </p>
 
 <input id="finalAnswer">
@@ -247,24 +249,11 @@ Katowice
 
 <br>
 
-<div style="text-align:center;">
+<p style="text-align:center;font-size:20px;line-height:1.8;">
+🛩️ A teraz proszę cierpliwie czekać do godziny 12:30.<br><br>
 
-<a
-href="https://maps.google.com/?q=Zuzlowa+3+Katowice"
-target="_blank"
-style="
-background:#4CAF50;
-padding:15px 25px;
-border-radius:10px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-display:inline-block;
-">
-🚗 Prowadź mnie
-</a>
-
-</div>
+Zgodnie z dokumentacją sprawy TAJNE AKTA NR 23, dla Pani Solenizantki przydzielono transport specjalny bolidem Kia F16 Rio Speed. 😎
+</p>
 
 </div>
 
@@ -273,129 +262,135 @@ display:inline-block;
 <script>
 
 function normalize(text){
-return text
-.toLowerCase()
-.trim()
-
+    return text
+    .toLowerCase()
+    .trim()
+    .replace(/ą/g,"a")
+    .replace(/ć/g,"c")
+    .replace(/ę/g,"e")
+    .replace(/ł/g,"l")
+    .replace(/ń/g,"n")
+    .replace(/ó/g,"o")
+    .replace(/ś/g,"s")
+    .replace(/ż/g,"z")
+    .replace(/ź/g,"z");
 }
 
 function check1(){
 
-let answer = normalize(
-document.getElementById("answer1").value
-);
+    let rawAnswer =
+    document.getElementById("answer1").value
+    .toLowerCase()
+    .trim();
 
-if(answer === "zuzel"){
+    let answer = normalize(rawAnswer);
 
-document.getElementById("msg1").innerHTML =
-"<span class='success'>✅ Trop potwierdzony.</span>";
+    if(answer === "zuzel" || rawAnswer === "żużel"){
 
-document.getElementById("step2")
-.classList.remove("hidden");
+        document.getElementById("msg1").innerHTML =
+        "<span class='success'>✅ Trop potwierdzony.</span>";
 
-}else{
+        document.getElementById("step2")
+        .classList.remove("hidden");
 
-document.getElementById("msg1").innerHTML =
-"<span class='error'>❌ Niepoprawna odpowiedź.</span>";
+    }else{
 
-}
+        document.getElementById("msg1").innerHTML =
+        "<span class='error'>❌ Niepoprawna odpowiedź.</span>";
 
+    }
 }
 
 function check2(){
 
-let answer = normalize(
-document.getElementById("answer2").value
-);
+    let answer = normalize(
+    document.getElementById("answer2").value
+    );
 
-if(answer === "30"){
+    if(answer === "30"){
 
-document.getElementById("msg2").innerHTML =
-"<span class='success'>✅ Dobrze.</span>";
+        document.getElementById("msg2").innerHTML =
+        "<span class='success'>✅ Dobrze.</span>";
 
-document.getElementById("part2")
-.classList.remove("hidden");
+        document.getElementById("part2")
+        .classList.remove("hidden");
 
-}else{
+    }else{
 
-document.getElementById("msg2").innerHTML =
-"<span class='error'>❌ Niepoprawna odpowiedź.</span>";
+        document.getElementById("msg2").innerHTML =
+        "<span class='error'>❌ Niepoprawna odpowiedź.</span>";
 
-}
-
+    }
 }
 
 function check2b(){
 
-let answer = normalize(
-document.getElementById("answer2b").value
-);
+    let answer = normalize(
+    document.getElementById("answer2b").value
+    );
 
-if(answer === "3"){
+    if(answer === "3"){
 
-document.getElementById("msg2b").innerHTML =
-"<span class='success'>✅ Numer ustalony.</span>";
+        document.getElementById("msg2b").innerHTML =
+        "<span class='success'>✅ Numer ustalony.</span>";
 
-document.getElementById("step3")
-.classList.remove("hidden");
+        document.getElementById("step3")
+        .classList.remove("hidden");
 
-}else{
+    }else{
 
-document.getElementById("msg2b").innerHTML =
-"<span class='error'>❌ Niepoprawna odpowiedź.</span>";
+        document.getElementById("msg2b").innerHTML =
+        "<span class='error'>❌ Niepoprawna odpowiedź.</span>";
 
-}
-
+    }
 }
 
 function check3(){
 
-let answer = normalize(
-document.getElementById("answer3").value
-);
+    let answer = normalize(
+    document.getElementById("answer3").value
+    );
 
-if(answer === "katowice"){
+    if(answer === "katowice"){
 
-document.getElementById("msg3").innerHTML =
-"<span class='success'>✅ Miasto ustalone.</span>";
+        document.getElementById("msg3").innerHTML =
+        "<span class='success'>✅ Miasto ustalone.</span>";
 
-document.getElementById("mapSection")
-.classList.remove("hidden");
+        document.getElementById("mapSection")
+        .classList.remove("hidden");
 
-}else{
+    }else{
 
-document.getElementById("msg3").innerHTML =
-"<span class='error'>❌ To nie jest właściwe miasto.</span>";
+        document.getElementById("msg3").innerHTML =
+        "<span class='error'>❌ To nie jest właściwe miasto.</span>";
 
-}
-
+    }
 }
 
 function checkFinal(){
 
-let answer = normalize(
-document.getElementById("finalAnswer").value
-);
+    let answer = normalize(
+    document.getElementById("finalAnswer").value
+    );
 
-const hasStreet = answer.includes("zuzlowa");
-const hasNumber = answer.includes("3");
-const hasCity = answer.includes("katowice");
+    const hasStreet = answer.includes("zuzlowa");
+    const hasNumber = answer.includes("3");
+    const hasCity = answer.includes("katowice");
 
-if(hasStreet && hasNumber && hasCity){
+    if(hasStreet && hasNumber && hasCity){
 
-document.getElementById("finalMsg").innerHTML =
-"<span class='success'>✅ Adres poprawny.</span>";
+        document.getElementById("finalMsg").innerHTML =
+        "<span class='success'>✅ Adres poprawny.</span>";
 
-document.getElementById("finish")
-.classList.remove("hidden");
+        document.getElementById("finish")
+        .classList.remove("hidden");
 
-}else{
+    }else{
 
-document.getElementById("finalMsg").innerHTML =
-"<span class='error'>❌ To nie jest poprawny adres.</span>";
+        document.getElementById("finalMsg").innerHTML =
+        "<span class='error'>❌ To nie jest poprawny adres.</span>";
 
-}
-
+    }
 }
 
 </script>
