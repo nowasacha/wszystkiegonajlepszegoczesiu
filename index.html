@@ -7,12 +7,11 @@
 
 <style>
 body{
-    font-family:Arial,sans-serif;
-    background:#0b1736;
+    background:#081a4b;
     color:white;
+    font-family:Arial,sans-serif;
     margin:0;
     padding:20px;
-    line-height:1.6;
 }
 
 .container{
@@ -21,10 +20,17 @@ body{
 }
 
 .card{
-    background:#1b2b57;
+    background:#1c2f69;
     padding:20px;
     border-radius:15px;
     margin-top:20px;
+}
+
+.quote{
+    background:#13265c;
+    padding:15px;
+    border-radius:10px;
+    margin:15px 0;
 }
 
 .hidden{
@@ -33,61 +39,44 @@ body{
 
 h1{
     text-align:center;
-    color:#ffc83d;
+    color:#ffc93c;
 }
 
 input{
     width:100%;
     padding:12px;
-    border:none;
     border-radius:8px;
+    border:none;
     margin-top:10px;
     box-sizing:border-box;
 }
 
 button{
-    padding:12px 20px;
-    margin-top:10px;
+    background:#ffc93c;
     border:none;
+    padding:12px 20px;
     border-radius:8px;
-    background:#ffc83d;
     font-weight:bold;
     cursor:pointer;
+    margin-top:10px;
 }
 
 .success{
-    color:#79ff93;
+    color:#80ff80;
     font-weight:bold;
 }
 
-.quote{
-    background:#13254d;
-    padding:15px;
-    border-radius:10px;
-    margin:10px 0;
-}
-
-.map-img{
+img{
     width:100%;
-    border-radius:12px;
-    margin-top:15px;
+    border-radius:10px;
+    margin:15px 0;
 }
 
 .address{
     text-align:center;
-    font-size:32px;
-    color:#ffc83d;
+    font-size:30px;
     font-weight:bold;
-}
-
-.finalButton{
-    display:inline-block;
-    background:#4CAF50;
-    color:white;
-    padding:15px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
+    color:#ffc93c;
 }
 </style>
 </head>
@@ -103,8 +92,7 @@ button{
 
 <p>
 Ktoś ukrył dla Ciebie miejsce, w którym znajduje się kolejna część niespodzianki.
-Udało nam się zabezpieczyć kilka materiałów dowodowych.
-Przeanalizuj je i odnajdź lokalizację.
+Przeanalizuj materiały dowodowe i odnajdź lokalizację.
 </p>
 </div>
 
@@ -128,11 +116,11 @@ Jeden błąd może kosztować zwycięstwo.
 
 <p>Wprowadź kod dostępu:</p>
 
-<input id="a1">
+<input id="answer1">
 
 <button onclick="check1()">Sprawdź</button>
 
-<p id="m1"></p>
+<p id="msg1"></p>
 
 </div>
 
@@ -140,9 +128,7 @@ Jeden błąd może kosztować zwycięstwo.
 
 <h2>📁 Dowód nr 2</h2>
 
-<p>
-W notatniku znaleziono ciąg:
-</p>
+<p>W notatniku znaleziono ciąg:</p>
 
 <div class="quote">
 2<br>
@@ -152,39 +138,33 @@ W notatniku znaleziono ciąg:
 ?
 </div>
 
-<p>
-Brakująca liczba jest pierwszą częścią klucza.
-</p>
-
-<input id="a2">
+<input id="answer2">
 
 <button onclick="check2()">Sprawdź</button>
 
-<p id="m2"></p>
+<p id="msg2"></p>
 
-<div id="stage2b" class="hidden">
+<div class="hidden" id="step2b">
 
 <hr>
 
 <p>
-✅ Pierwsza część klucza odnaleziona.
+✅ Odnaleziono kolejną wskazówkę.
 </p>
 
 <div class="quote">
 30 / 2 / 5
 </div>
 
-<p>
-Odpowiedź:
-</p>
+<p>Odpowiedź:</p>
 
-<input id="a2b">
+<input id="answer2b">
 
 <button onclick="check2b()">Sprawdź</button>
 
-<p id="m2b"></p>
+<p id="msg2b"></p>
 
-<button id="runawayBtn">
+<button id="runaway">
 Nie znasz odpowiedzi? Kliknij tutaj i przejdź dalej.
 </button>
 
@@ -197,42 +177,45 @@ Nie znasz odpowiedzi? Kliknij tutaj i przejdź dalej.
 <h2>📁 Dowód nr 3</h2>
 
 <div class="quote">
-Świadek zeznał:<br><br>
+Świadek zeznał:
+
+<br><br>
 
 „Najpierw zobaczyłem budynek nazwany tak samo jak przedmiot,
-na którym podaje się zupę.<br><br>
+na którym podaje się zupę.
 
-Potem odwiedziłem zabytkowe osiedle robotnicze
-z czerwonej cegły.<br><br>
+<br><br>
 
-Następnie trafiłem do siedziby narodowej orkiestry radiowej.<br><br>
+Potem odwiedziłem zabytkowe osiedle robotnicze z czerwonej cegły.
+
+<br><br>
+
+Następnie trafiłem do siedziby narodowej orkiestry radiowej.
+
+<br><br>
 
 Wszystkie miejsca znajdowały się w tym samym mieście.”
 </div>
 
-<p>
-Jakie to miasto?
-</p>
+<p>Jakie to miasto?</p>
 
-<input id="a3">
+<input id="answer3">
 
 <button onclick="check3()">Sprawdź</button>
 
-<p id="m3"></p>
+<p id="msg3"></p>
 
 </div>
 
-<div class="card hidden" id="mapSection">
+<div class="card hidden" id="mapa">
 
 <h2>🗺️ Ostatni materiał dowodowy</h2>
 
-<p>
-Odtwórz pełny adres.
-</p>
+<img src="mapa.jpg" alt="Mapa">
 
-<img src="mapa.jpg" class="map-img" alt="Mapa">
+<p>Odtwórz pełny adresAnswer">
 
-ck="checkFinal()">Sprawdź adres</button>
+<button onclick="checkFinal()">Sprawdź adres</button>
 
 <p id="finalMsg"></p>
 
@@ -250,87 +233,95 @@ Katowice
 <br>
 
 <div style="text-align:center;">
-
 <a
-href="https://maps.google.com/?q=Żużlowa+3+Katowice"
+href="https://maps.google.com/?q=Zuzlowa+3+Katowice"
 target="_blank"
-class="finalButton">
+style="
+background:#4CAF50;
+padding:15px 25px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+">
 🚗 Prowadź mnie
 </a>
-
 </div>
 
-</div>
-
-</div>
-
-<script>rCase()
-.trim()
-.replace(/ą/g,"a")
-.replace(/ć/g,"c")
-.replace(/ę/g,"e")
-.replace(/ł/g,"l")
-.replace(/ń/g,"n")
-.replace(/ó/g,"o")
-.replace(/ś/g,"s")
-.replace(/ż/g,"z")
-.replace(/ź/g,"z");
+</ce(/ł/g,'l')
+.replace(/ń/g,'n')
+.replace(/ó/g,'o')
+.replace(/ś/g,'s')
+.replace(/ż/g,'z')
+.replace(/ź/g,'z');
 }
 
 function check1(){
 
-let answer = normalize(document.getElementById("a1").value);
+let answer = normalize(
+document.getElementById("answer1").value
+);
 
 if(answer === "zuzel"){
 
-document.getElementById("m1").innerHTML =
+document.getElementById("msg1").innerHTML =
 "<span class='success'>✅ Trop potwierdzony.</span>";
 
 document.getElementById("step2")
 .classList.remove("hidden");
 }
+
 }
 
 function check2(){
 
-let answer = normalize(document.getElementById("a2").value);
+let answer = normalize(
+document.getElementById("answer2").value
+);
 
 if(answer === "30"){
 
-document.getElementById("m2").innerHTML =
+document.getElementById("msg2").innerHTML =
 "<span class='success'>✅ Dobrze.</span>";
 
-document.getElementById("stage2b")
+document.getElementById("step2b")
 .classList.remove("hidden");
 }
+
 }
 
 function check2b(){
 
-let answer = normalize(document.getElementById("a2b").value);
+let answer = normalize(
+document.getElementById("answer2b").value
+);
 
 if(answer === "3"){
 
-document.getElementById("m2b").innerHTML =
+document.getElementById("msg2b").innerHTML =
 "<span class='success'>✅ Numer ustalony.</span>";
 
 document.getElementById("step3")
 .classList.remove("hidden");
 }
+
 }
 
 function check3(){
 
-let answer = normalize(document.getElementById("a3").value);
+let answer = normalize(
+document.getElementById("answer3").value
+);
 
 if(answer === "katowice"){
 
-document.getElementById("m3").innerHTML =
+document.getElementById("msg3").innerHTML =
 "<span class='success'>✅ Miasto ustalone.</span>";
 
-document.getElementById("mapSection")
+document.getElementById("mapa")
 .classList.remove("hidden");
 }
+
 }
 
 function checkFinal(){
@@ -339,33 +330,32 @@ let answer = normalize(
 document.getElementById("finalAnswer").value
 );
 
-const hasStreet = answer.includes("zuzlowa");
-const hasNumber = answer.includes("3");
-const hasCity = answer.includes("katowice");
-
-if(hasStreet && hasNumber && hasCity){
-
-document.getElementById("finish")
-.classList.remove("hidden");
+if(
+answer.includes("zuzlowa")
+&& answer.includes("3")
+&& answer.includes("katowice")
+){
 
 document.getElementById("finalMsg").innerHTML =
 "<span class='success'>✅ Adres poprawny.</span>";
-}
+
+document.getElementById("finish")
+.classList.remove("hidden");
 }
 
-const btn = document.getElementById("runawayBtn");
+}
+
+const btn = document.getElementById("runaway");
 
 btn.addEventListener("mouseover", () => {
 
-const maxX = window.innerWidth - 350;
-const maxY = window.innerHeight - 120;
-
-const x = Math.random() * maxX;
-const y = Math.random() * maxY;
+const x = Math.random() * (window.innerWidth - 350);
+const y = Math.random() * (window.innerHeight - 100);
 
 btn.style.position = "fixed";
 btn.style.left = x + "px";
 btn.style.top = y + "px";
+
 });
 
 </script>
