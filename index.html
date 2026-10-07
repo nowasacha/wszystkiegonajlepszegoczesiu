@@ -258,15 +258,20 @@ font-weight:bold;
 
 function check1(){
 
-let answer = normalize(
-document.getElementById("answer1").value
-);
-
-if(answer === "zuzel"){
-
+let answer = document
+.getElementById("answer1")
+.value
+.toLowerCase()
+.trim();
+ 
+if(
+answer === "żużel" ||
+answer === "zuzel"
+){
+ 
 document.getElementById("msg1").innerHTML =
 "<span class='success'>✅ Trop potwierdzony.</span>";
-
+ 
 document.getElementById("step2")
 .classList.remove("hidden");
 }
